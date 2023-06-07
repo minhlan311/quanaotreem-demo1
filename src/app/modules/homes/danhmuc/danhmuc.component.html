@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="/assets/css/style_category.css">
+<section class="main-out">
+    <div class="main">
+        <div class="box-inner">
+            <div class="box-left">Sắp xếp theo</div>
+            <div class="box-right">
+                <div [ngClass]="{active: loc=='KM'}" (click)="setDieuKienLoc('KM')" class="name">Khuyến mại tốt nhất</div>
+                <div [ngClass]="{active: loc=='BC'}" (click)="setDieuKienLoc('BC')" class="name">Bán chạy</div>
+                <div [ngClass]="{active: loc=='MV'}" (click)="setDieuKienLoc('MV')" class="name">Mới về</div>
+                <div [ngClass]="{active: loc=='TD'}" (click)="setDieuKienLoc('TD')" class="name">Giá giảm dần</div>
+                <div [ngClass]="{active: loc=='GD'}" (click)="setDieuKienLoc('GD')" class="name">Giá tăng dần</div>
+                <div class="price">
+                    <input type="text" id="pricedown" placeholder="Giá thấp nhất"> -
+                    <input type="text" id="priceup" placeholder="Giá cao nhất">
+                    <button>Lọc</button>
+                </div>
+                <select class="name" (ngModelChange)="loadData($event)" [(ngModel)]="pageSize">
+                    <option value="6">6</option>
+                    <option value="12">12</option>
+                    <option value="24">24</option> 
+                    <option value="46">46</option>
+                </select>
+            </div>
+        </div>
+        <div class="box-bottom">
+            <!-- <div class="row" *ngIf="list_item && list_item.length > 0">
+                <div *ngFor="let it of list_item" class="col-2 col-s-3 content">
+                    <a [routerLink]="['/homes/detail',it.maSanPham]"
+                        title="Màn hình thông minh Samsung LS32AM700UEXXV 32 inch 4K"><img src="{{it.anhDaiDien}}"></a>
+                    <div class="text_product_1"><a href="#"
+                            title="Màn hình thông minh Samsung LS32AM700UEXXV 32 inch 4K">{{it.tenSanPham}}</a><br>
+                        <span class="span_price_up">10.990.000₫</span><span
+                            class="span_price_down"><b>{{it.gia}}đ</b></span>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+<div style="text-align:right ; width:20% ; ">
+    <ngb-pagination (pageChange)="loadPage($event)" [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalItem">
+    </ngb-pagination>
+</div>

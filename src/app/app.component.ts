@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ban-may-tinh';
+  product={
+    name: 'Hat',
+    quatity: 200,
+    price: 500
+  }
 }

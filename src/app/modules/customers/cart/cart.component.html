@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="/assets/css/style_cart.css">
+<section class="main">
+    <div class="title"style=" font-size: 50px; color: black; padding-top: 70px">Giỏ hàng</div>
+    <div class="row" style="display: flex ; width: 100%; background-color: #E1E5E3;" >
+        
+        <div class="padding-table" style=" width: 70%">
+            <table class="table-prod" style="width: 100%">
+                <thead>
+                    <tr >
+                        <th></th>
+                        <th colspan="1">SẢN PHẨM</th>
+                        <th>GIÁ</th>
+                        <th>SỐ LƯỢNG</th>
+                        <th>TẠM TÍNH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of sanpham;let indexOfelement=index;">
+                        <td><i (click)="deleteProduct(indexOfelement)" class="fa fa-times-circle" style="font-size:30px;color:red;cursor: pointer;" title="Xóa"></i></td>
+                        <td><img style="width: 50px; height: 50px;" src="/assets/img/nonamoi/{{x.Anh}}.jpg"> </td>
+                        <td>{{x.Gia}}đ</td>
+                        <td> 
+                            <button (click)="Giam(x)" style="border: 1px solid #dbdbdb;padding: 4px 8px;">-</button>
+                            <input [(ngModel)] = "x.SoLuong" type="text" value="{{x.SoLuong}}" style="width: 35px;border: 1px solid #dbdbdb;padding: 4px;margin-left: -5px;margin-right: -5px;">
+                            <button (click) ="Tang(x)" style="border: 1px solid #dbdbdb;padding: 4px 8px;">+</button>
+                        </td>
+                        <td>{{x.Gia * x.SoLuong}}đ</td>
+                    </tr> 
+                </tbody>
+            </table>
+            <div class="update">
+                <button (click)="updateCart()">Cập nhật giỏ hàng</button>
+                <button (click)="XoaCart()">Xóa giỏ hàng</button>
+            </div>
+        </div>
+        <div class="right padding-table" style=" width: 30%">
+            <table class="table-right">
+                <tr>
+                    <td colspan="2" class="title">CỘNG GIỎ HÀNG</td>
+
+                </tr>
+                <tr>
+                    <td class="h">Tạm tính</td>
+                </tr>
+                <tr>
+                    <td>Tổng</td>
+                    <td class="price"><h4>{{tongtien}}</h4> </td>
+                </tr>
+            </table>
+            <div class="pay">
+                <button (click)="ThanhToan()">Tiến hành thanh toán</button>
+            </div>
+            <div class="endow">
+                <p><i class="fas fas fa-ticket-alt"></i> Phiếu ưu đãi</p>
+                <input type="text" placeholder="Mã ưu đãi"><br>
+                <button class="btn-updateCart">Áp dụng</button>
+            </div>
+        </div>
+    </div>
+</section>
